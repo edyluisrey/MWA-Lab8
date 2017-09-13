@@ -29,6 +29,11 @@
             latitude: <input type="text" name="latitude" > <br><br>
             <input type="submit" value="Search">
         </form>
+        <ul> 
+            <% for(const err of errors){ %>
+               <li><%=err.msg %></li>
+            <% } %>
+        </ul>
          
         <h2>Result</h2>
         <table>
