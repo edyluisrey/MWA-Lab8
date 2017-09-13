@@ -8,6 +8,11 @@ var lessMiddleware = require('less-middleware');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var add = require('./routes/add');
+var update = require('./routes/update');
+var deleteLocation = require('./routes/delete');
+var search = require('./routes/search');
+
 
 var app = express();
 
@@ -23,9 +28,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use("/public", express.static(__dirname + '/public'));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/add', add);
+app.use('/update', update);
+app.use('/delete', deleteLocation);
+app.use('/search',search);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -43,6 +53,10 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+app.listen(9001,()=>{
+  console.log("Server has started on port 8000");
 });
 
 module.exports = app;

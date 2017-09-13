@@ -1,0 +1,26 @@
+- we need create index for books and students
+db.books.createIndex({isbn:1, title:1});
+db.student.createIndex({id:1});
+- Create index for title improve the performance, because the core module
+of library system is search books.
+
+Books{
+	isbn: '',
+	title:'',
+	keyworks: ['','',''],
+	author:[{ 
+	          firstName: '', 
+	          lastName:''}]
+}
+
+Student{
+	id:'',
+	name:'',
+	Books:[{ isbn:'',
+	         borrow_date:'',
+             return_date
+		      }],
+    contact: [{ address:'',
+                phone:'' 
+            }] 
+}

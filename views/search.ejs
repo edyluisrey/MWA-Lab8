@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search</title>
+    <script src="/javascripts/currentLocation.js"></script>
+    <style>
+        table{
+            border-collapse:collapse;
+            width:50%;
+        }
+        table,th,td{
+            border:1px solid black;
+        }
+        th{
+            height:40px;
+            background-color: #D8D8D8;
+        }
+        td{
+            height:30px;
+        }
+    </style>
+</head>
+    <body>
+        <h1>Search</h1>
+        <form action="/search" method="post">            
+            Category: <input type="text" name="category" > <br><br>
+            Name: <input type="text" name="name"> <br><br>
+            longitude: <input type="text" name="longitude"> <br><br>
+            latitude: <input type="text" name="latitude" > <br><br>
+            <input type="submit" value="Search">
+        </form>
+         
+        <h2>Result</h2>
+        <table>
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>longitude</th>
+            <th>latitude</th>
+        </tr>          
+        <% if(result){
+           docs.forEach((doc) => { %>
+            <tr>
+            <td><%= doc.name %></td>
+            <td><%= doc.category %></td>
+            <td><%= doc.location[0] %></td>
+            <td><%= doc.location[1] %></td>          
+            </tr>
+        <% }) } %>
+
+        </table>
+    </body>
+</html>
