@@ -29,9 +29,9 @@ router.post("/",function(req,res,next){
             console.log(err);
             if(err) throw error;
             res.end("successfully added a new location");
-            create2dIndex(db, function() {
-    			return db.close();
-  			});                     
+			create2dIndex(db, function() {
+				return db.close();
+			});                     
         });
 
     });
